@@ -14,7 +14,7 @@ class App extends React.Component {
     this.state = {
       items: [
         {id: 0, value: "Napisać własny projekt na Pracownie Aplikacji Internetowych", state: "completed", edit: false},
-        {id: 1, value: "Wynieść śmieci", state: "todo", edit: true},
+        {id: 1, value: "Wynieść śmieci", state: "todo", edit: false},
         {id: 2, value: "Nakarmić psa", state: "todo", edit: false},
         {id: 3, value: "Zbudować dom", state: "todo", edit: false},
         {id: 4, value: "Spłodzić syna", state: "todo", edit: false},
@@ -37,28 +37,23 @@ class App extends React.Component {
   }
   onAdd(item) {
     const todo = this.state.items;
-    console.log(this.state.items)
     let index = 0;
     if(todo.length) {
       index = todo[todo.length-1].id + 1;
     }
     todo.push({id: index, value: item, state: "todo", edit: false});
-    console.log(this.state)
     this.setState( {
       items: todo
     });
-    console.log(this.state)
   }
 
   onDelete (item) {
     const filtered = this.state.items.filter((todoItem, index) => {
       return(item !== todoItem.id);
     })
-    console.log(filtered)
     this.setState( {
       items: filtered
     })
-    console.log(this.state.items)
   }
   onComplete(id) {
     const items = this.state.items;
