@@ -1,0 +1,203 @@
+.list li {
+  width: 100%;
+  min-height: 50px;
+  display: block;
+  background: #fff;
+  margin: 15px 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0px 1px 2px rgba(51, 51, 102, 0.15);
+  font-size: 14px;
+  padding-right: 150px;
+  position: relative;
+  border: 2px solid #FFFFFF;
+}
+
+.list li .text {
+  text-align: left;
+}
+
+.list li input {
+  height: 25px;
+  width: 100%;
+  font-size: 14px;
+  text-indent: 10px;
+  border: 1px solid rgb(80, 80, 78);
+  border-radius: 2px;
+  background: rgba(149, 149, 149, 1);
+  color: #000000;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.list li.bold {
+  border: 2px solid #336699;
+  font-weight: 700;
+}
+
+.list li .buttons {
+  /* width: 150px;
+  height: 50px; */
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+}
+
+.list li .buttons button {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+.list li .buttons button.done::before {
+  content: '';
+  display: block;
+  height: 30px;
+  width: 1px;
+  background: #CCCCCC;
+  position: absolute;
+  top: 10px;
+  left: 0px;
+}
+
+.list li .buttons button.important::after {
+  content: '';
+  display: block;
+  height: 30px;
+  width: 1px;
+  background: #CCCCCC;
+  position: absolute;
+  top: 10px;
+  right: 0px;
+}
+
+.buttons .remove svg {
+  width: 30px;
+  height: 30px;
+}
+
+.buttons button.remove svg .fill {
+  fill: #CCCCCC;
+  transition: fill 0.3s ease;
+}
+
+.buttons .done svg {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #336699;
+  border-radius: 15px;
+}
+
+.buttons .cancel svg {
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+}
+
+.buttons button.cancel svg .fill {
+  fill: #ec2c2c;
+  transition: fill 0.3s ease;
+}
+
+.buttons button.done svg .fill {
+  fill: #336699;
+  transition: fill 0.3s ease;
+}
+
+.buttons button.done svg .noFill {
+  fill: none;
+  transition: fill 0.3s ease;
+}
+
+.buttons button.important svg {
+  width: 30px;
+  height: 30px;
+}
+
+.buttons button.important svg .fill {
+  fill: #CCCCCC;
+  transition: fill 0.3s ease;
+}
+
+.buttons button.important svg .pFill {
+  fill: #CCCCCC;
+  transition: fill 0.3s ease;
+}
+
+.buttons button.important svg .sFill {
+  fill: #CCCCCC;
+  transition: fill 0.3s ease;
+}
+
+.list#completed {
+  margin-top: 50px;
+  position: relative;
+}
+
+.list#completed::after {
+  content: '';
+  display: block;
+  position: absolute;
+  background: #FFFFFF;
+  width: 150px;
+  height: 1px;
+  left: 50%;
+  top: -25px;
+  margin: 0 -75px 0;
+}
+
+.list#completed li .buttons button.done svg {
+  background: #336699;
+}
+
+.list#completed li .buttons button.done svg .fill {
+  fill: #FFFFFF;
+}
+
+/* MEDIAQUERIES BUTTONS HOVER */
+
+@media only screen and (min-width: 500px) {
+  .buttons button:hover {
+    cursor: pointer;
+  }
+  .buttons button.remove:hover .fill {
+    fill: #FF6666;
+  }
+  .buttons button.done:hover .fill {
+    fill: #ffffff;
+  }
+  .buttons button.done:hover svg {
+    background: #336699;
+  }
+  .buttons button.important svg:hover .fill {
+    fill: #f57b3e;
+  }
+  .buttons button.important svg:hover .pFill {
+    fill: #393939;
+  }
+  .buttons button.important svg:hover .sFill {
+    fill: #494545;
+  }
+  .buttons button.cancel svg:hover .fill {
+    fill: #000000;
+  }
+  .buttons button.cancel svg:hover {
+    background: #ec2c2c;
+  }
+  .buttons button.cancel svg:hover .cancelBorder {
+    fill: rgba(255, 255, 255, 0);
+  }
+}

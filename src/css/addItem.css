@@ -1,0 +1,67 @@
+header {
+  width: 100%;
+  height: 80px;
+  background: #336699;
+  padding: 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  box-shadow: 0px 2px 4px rgba(51, 51, 102, 0.15);
+}
+
+header input {
+  height: 50px;
+  ;
+  width: 100%;
+  font-size: 14px;
+  text-indent: 15px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border: none;
+  padding: 0 60px 0 0;
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFF;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  box-shadow: none;
+  outline: none;
+}
+
+header input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+header button {
+  width: 50px;
+  height: 50px;
+  border: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border-radius: 25px;
+  background: #f57b3e;
+  cursor: pointer;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  box-shadow: none;
+  outline: none;
+}
+
+header button svg {
+  display: block;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+}
+
+header button svg .fill {
+  fill: #FFF;
+}

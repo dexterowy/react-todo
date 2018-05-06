@@ -1,0 +1,20 @@
+.list__wrapper {
+  /* min-height: 100vh; */
+  /* color: rgb(95, 98, 107); */
+}
+
+.list {
+  padding: 0px 15px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.list:first-of-type:empty::before {
+  content: 'Nothing to do here ¯\\_ツ_/¯';
+}
+
+.list:last-of-type:empty::before {
+  content: 'Maybe start do something?  ( ◔ ʖ̯ ◔ )';
+}
