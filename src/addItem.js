@@ -32,7 +32,6 @@ class AddItem extends React.Component {
     this.refs.add.value = "";
   }
   onEnter(e) {
-    console.log(e.keyCode);
     if(e.keyCode === 13) {
       this.handleClick();
     }
