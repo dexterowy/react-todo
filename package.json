@@ -1,8 +1,8 @@
 {
-  "name": "todo-react",
-  "version": "0.1.0",
+  "name": "react-todo",
+  "version": "0.0.1",
   "private": true,
-  "homepage": "https://dexterowy.github.io/todo-react",
+  "homepage": "https://dexterowy.github.io/react-todo",
   "dependencies": {
     "gh-pages": "^1.1.0",
     "react": "^16.2.0",
