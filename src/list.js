@@ -6,8 +6,8 @@ class List extends React.Component {
   render() {
     return(
       <div className="list__wrapper">
-        <Todo onDel={this.props.onDel} data={this.props.data} onEdit={this.props.onEdit} onDone={this.props.onDone}></Todo>
-        <Completed onDel={this.props.onDel} data={this.props.data} onDone={this.props.onDone}></Completed>
+        <Todo onDel={this.props.onDel} data={this.props.data.todo} onEdit={this.props.onEdit} onDone={this.props.onDone}></Todo>
+        <Completed onDel={this.props.onDel} data={this.props.data.completed} onDone={this.props.onDone}></Completed>
       </div>
     )
   }

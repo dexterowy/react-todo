@@ -32,10 +32,10 @@ class Item extends React.Component {
   )
   }
   onDelete() {
-    this.props.onDel(this.props.id)
+    this.props.onDel(this.props.id, this.props.state)
   }
   onComplete() {
-    this.props.onDone(this.props.id);
+    this.props.onDone(this.props.id, this.props.state);
   }
 
   renderValue() {
@@ -132,13 +132,13 @@ class Item extends React.Component {
   }
 
   save = () => {
-    this.props.onEdit(this.props.id, this.refs.editInput.value);
+    this.props.onEdit(this.props.id, this.props.state, this.refs.editInput.value);
   }
   edit = () => {
-    this.props.onEdit(this.props.id);
+    this.props.onEdit(this.props.id, this.props.state);
   }
   cancel = () => {
-    this.props.onEdit(this.props.id, this.props.value)
+    this.props.onEdit(this.props.id, this.props.state, this.props.value)
   }
 
 }

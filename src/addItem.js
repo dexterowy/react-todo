@@ -28,7 +28,7 @@ class AddItem extends React.Component {
     )
   }
   handleClick () {
-    this.props.onAdd(this.refs.add.value);
+    this.props.onAdd(this.refs.add.value, "todo");
     this.refs.add.value = "";
   }
   onEnter(e) {
