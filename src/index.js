@@ -12,21 +12,26 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      items: [
-        {id: 0, value: "Napisać własny projekt na Pracownie Aplikacji Internetowych", state: "completed", edit: false},
-        {id: 1, value: "Wynieść śmieci", state: "todo", edit: false},
-        {id: 2, value: "Nakarmić psa", state: "todo", edit: false},
-        {id: 3, value: "Zbudować dom", state: "todo", edit: false},
-        {id: 4, value: "Spłodzić syna", state: "todo", edit: false},
-        {id: 5, value: "Zasadzić drzewo", state: "completed", edit: false},
-        {id: 6, value: "Poznać ReactJS", state: "completed", edit: false}
-      ]
+      items: {
+        todo: [
+          {id: 1, value: "Wynieść śmieci", state: "todo", edit: false},
+          {id: 2, value: "Nakarmić psa", state: "todo", edit: false},
+          {id: 3, value: "Zbudować dom", state: "todo", edit: false},
+          {id: 4, value: "Spłodzić syna", state: "todo", edit: false}
+        ],
+        completed: [
+          {id: 1, value: "Napisać własny projekt na Pracownie Aplikacji Internetowych",state: "completed", edit: false},
+          {id: 2, value: "Zasadzić drzewo",state: "completed", edit: false},
+          {id: 3, value: "Poznać ReactJS",state: "completed", edit: false}
+        ]
+      }
     };
     this.onDelete = this.onDelete.bind(this);
     this.onAdd = this.onAdd.bind(this);
     this.onComplete = this.onComplete.bind(this);
   }
   render() {
+    console.log(this.state)
     return(
       <div className="app__wrapper">
         <AddItem onAdd={this.onAdd}/>
@@ -35,57 +40,129 @@ class App extends React.Component {
       </div>
     );
   }
-  onAdd(item) {
-    const todo = this.state.items;
+  onAdd(item) { //DONE
+    const todo = this.state.items.todo;
     let index = 0;
     if(todo.length) {
       index = todo[todo.length-1].id + 1;
     }
-    todo.push({id: index, value: item, state: "todo", edit: false});
+    todo.unshift({id: index, value: item, state: "todo", edit: false});
+    todo.forEach((item, index) => {
+      item.id = index;
+    })
     this.setState( {
-      items: todo
+      items: {
+        todo: todo,
+        completed: this.state.items.completed
+      }
+
     });
   }
 
-  onDelete (item) {
-    const filtered = this.state.items.filter((todoItem, index) => {
-      return(item !== todoItem.id);
-    })
-    this.setState( {
-      items: filtered
-    })
-  }
-  onComplete(id) {
-    const items = this.state.items;
-    items.forEach( (item) => {
-      if(item.id === id && item.state === "todo") {
-        item.state = "completed";
-        item.edit = false;
-      }
-      else if(item.id === id && item.state === "completed") {
-        item.state = "todo";
-      }
-      this.setState({
-        items: items
+  onDelete (item, state) { //DONE
+    if(state === "todo") {
+      const filtered = this.state.items.todo.filter((todoItem, index) => {
+        return(item !== todoItem.id);
+      })
+      filtered.forEach((item,index)=> {
+        item.id = index;
+      })
+      this.setState( {
+        items: {
+          todo: filtered,
+          completed: this.state.items.completed
+        }
+      })
+    }
+    else if(state === "completed") {
+      const filtered = this.state.items.completed.filter((todoItem, index) => {
+        return(item !== todoItem.id);
       });
-    })
-  }
-  onEdit = (id, value) => {
-    const items = this.state.items.filter((item) => {
-      if(item.id === id) {
-        if(item.edit === true) {
-          item.edit = false;
-          item.value = value;
+      filtered.forEach((item,index)=> {
+        item.id = index;
+      })
+      this.setState( {
+        items: {
+          todo: this.state.items.todo,
+          completed: filtered
         }
+      })
+    }
+    }
+
+
+  onComplete(id, state) {
+    if(state === "todo") {
+      const completed = this.state.items.completed;
+      const filtered = this.state.items.todo.filter((todoItem, index) => {
+        if(id !== todoItem.id) return(true);
         else {
-          item.edit = true;
+          todoItem.state = "completed";
+          completed.unshift(todoItem);
+          return(false);
         }
-      }
-      return true;
-    })
-    this.setState({
-      items: items
-    })
+      })
+      completed.forEach((item, index) => {
+        item.id = index;
+      });
+      filtered.forEach((item, index) => {
+        item.id = index;
+      })
+      this.setState( {
+        items: {
+          todo: filtered,
+          completed: completed
+        }
+      })
+    }
+    else if(state === "completed") {
+      const todos = this.state.items.todo;
+      const filtered = this.state.items.completed.filter((todoItem, index) => {
+        if(id !== todoItem.id) return(true);
+        else {
+          todoItem.state = "todo";
+          todos.unshift(todoItem);
+          return(false);
+        }
+      })
+      todos.forEach((item, index) => {
+        item.id = index;
+      });
+      filtered.forEach((item, index) => {
+        item.id = index;
+      })
+      this.setState( {
+        items: {
+          todo: todos,
+          completed: filtered
+        }
+      })
+    }
   }
+
+  onEdit = (id, state, value) => {
+    if(state === "todo") {
+      const items = this.state.items.todo.filter((item) => {
+        if(item.id === id) {
+          if(item.edit === true) {
+            item.edit = false;
+            item.value = value;
+          }
+          else {
+            item.edit = true;
+          }
+        }
+        return true;
+      })
+      this.setState({
+        items: {
+          todo: items,
+          completed: this.state.items.completed
+        }
+      })
+    }
+  }
+
+
 }
 ReactDom.render(<App />, document.getElementById('root'));
