@@ -1,3 +1,3 @@
 #React Todolist
 
-This is my first react project, simple Todolist.
+Rewrited old todo list for a react-todo list
